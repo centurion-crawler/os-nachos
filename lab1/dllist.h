@@ -1,7 +1,5 @@
-#include "copyright.h"
 #ifndef DLLIST_H
 #define DLLIST_H
-const int NULL = 0;
 
 class DLLElement{
     public:
@@ -30,7 +28,6 @@ private:
     DLLElement *last; // last element of the list, NULL if empty
 };
 int GenerateInt();
-extern bool Create_DLList(DLList* dptr, int N,int whichthread);
-extern bool RemoveItems(DLList* dptr,int N,int whichthread);
-
+bool CreateDLList(DLList*,int,int);
+bool RemoveItems(DLList* ,int ,int);
 #endif

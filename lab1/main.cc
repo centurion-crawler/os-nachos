@@ -83,6 +83,7 @@ extern void MailTest(int networkID);
 int
 main(int argc, char **argv)
 {
+	
 	hello_print();
     int argCount;			// the number of arguments 
 					// for a particular command
@@ -107,11 +108,11 @@ main(int argc, char **argv)
 	for (argc--, argv++; argc > 0; argc -= argCount, argv += argCount) {
 		argCount = 1;
 		switch (argv[0][1]){
-			case: 'T':
+			case 'T':
 				threadNum = atoi(argv[1]);
 				argCount++;
 				break;
-			case: 'N':
+			case 'N':
 				itemNum = atoi (argv[1]);
 				argCount++;
 				break;
@@ -124,7 +125,8 @@ main(int argc, char **argv)
 				break;
 		}
 	}	
-    ThreadTest(threadNum,itemNum);
+	printf("itemNum:%d,threadNum:%d\n",itemNum,threadNum);
+    ThreadTest(itemNum,threadNum);
 #endif
 
     for (argc--, argv++; argc > 0; argc -= argCount, argv += argCount) {

@@ -1,6 +1,8 @@
 // dllist.cc
-#include "copyright.h"
+#include <stdlib.h>
+#include <stdio.h> 
 #include "dllist.h"
+#include "system.h"
 
 DLLElement::DLLElement(void* itemPtr, int sortKey)
 {
@@ -15,7 +17,7 @@ DLList::DLList()
 }
 DLList::~DLList()
 {
-    while(Remove()!=NULL);
+    while(Remove(NULL)!=NULL);
 }
 void DLList::Append(void *item)
 {
@@ -27,7 +29,9 @@ void DLList::Append(void *item)
         last = element;
     } else {
         last->next = element;
+        element->key = last->key+1;
         element->prev=last;
+        element->next=NULL;
         last = element;
     } 
 }
@@ -40,7 +44,9 @@ void DLList::Prepend(void *item)
         last =  element;
     }else {
         first->prev = element;
+        element->key = first->key-1;
         element->next = first;
+        element->prev = NULL;
         first = element;
     }
 }

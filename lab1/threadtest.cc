@@ -12,12 +12,16 @@
 #include "copyright.h"
 #include "system.h"
 #include "dllist.h"
+
+
 // testnum is set in main.cc
 int testnum = 1;
 int threadNum;
 int itemNum; 
 int errorType = 0;
 DLList *dlist = new DLList();
+
+
 //----------------------------------------------------------------------
 // SimpleThread
 // 	Loop 5 times, yielding the CPU to another ready thread 
@@ -26,8 +30,6 @@ DLList *dlist = new DLList();
 //	"which" is simply a number identifying the thread, for debugging
 //	purposes.
 //----------------------------------------------------------------------
-
-
 
 void
 SimpleThread(int which)
@@ -63,31 +65,30 @@ ThreadTest1()
 void 
 DLListThread(int which)
 {
-    Create_DLList(dlist,threadNum,which);
-    RemoveItems(dlist,threadNum,which);
+    CreateDLList(dlist,itemNum,which);
+    RemoveItems(dlist,itemNum,which);
 }
 
-void ThreadTest2(int threadNum)
+void ThreadTest2()
 {
     DEBUG('t', "Entering ThreadTest2");
 
-    Thread *t = new Thread("fork thread");
     for (int i=0;i<threadNum;i++)
+    {
+        Thread *t = new Thread("fork thread");
         t->Fork(DLListThread,i);
+    }
 
 }
 void
-ThreadTest(int T,int N)
+ThreadTest(int N,int T)
 {
     switch (testnum) {
     case 1:
-        threadNum = T;
-        itemNum = N;
-        ThreadTest2(threadNum);
+        ThreadTest2();
         break;
     default:
 	    printf("No test specified.\n");
 	break;
     }
 }
-
