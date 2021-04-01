@@ -17,7 +17,7 @@ class DLList{
         void Prepend(void *item); // add to head of the list 
         void Append(void *item); // add to tail of the list 
         void *Remove(int *keyPtr); // remove from head of the list
-
+        void Print();
         bool IsEmpty(); // check if list is empty return true 
         void SortedInsert(void *item, int sortKey); // insert a item before/after with key==sortkey
         void *SortedRemove(int sortKey); //  remove first item with key==sortKey 

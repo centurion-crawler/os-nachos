@@ -62,6 +62,17 @@ void * DLList::Remove(int *keyPtr)
     }
     else return NULL;
 }
+void DLList::Print()
+{
+    printf("The key number in the Dllist:");
+    DLLElement *p=first;
+    while(p->next!=NULL)
+    {
+        printf("%d ",p->key);
+        p=p->next;
+    }
+    printf("\n");
+}
 bool DLList::IsEmpty()
 {
     if (first == NULL && last == NULL)

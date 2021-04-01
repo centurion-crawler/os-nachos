@@ -19,10 +19,13 @@ int main(int argc, char **argv)
         }
     }
     CreateDLList(dptr,itemNum,0);
+    printf("Append completed.\n");
     dptr->Append(NULL);
+    printf("Prepend completed.\n");
     dptr->Prepend(NULL);
+    dptr->Print();
     printf("IsEmpty? %d\n",dptr->IsEmpty());
-    dptr->SortedInsert(NULL, GenerateInt());
+    dptr->SortedInsert(NULL, GenerateInt(0));
     RemoveItems(dptr,itemNum,0);
     printf("IsEmpty? %d\n",dptr->IsEmpty());
     return 0;
