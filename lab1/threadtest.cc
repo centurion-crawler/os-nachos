@@ -20,8 +20,7 @@ int threadNum;
 int itemNum; 
 int errorType = 0;
 DLList *dlist = new DLList();
-
-
+int tmpnum;
 //----------------------------------------------------------------------
 // SimpleThread
 // 	Loop 5 times, yielding the CPU to another ready thread 
@@ -65,7 +64,44 @@ ThreadTest1()
 void 
 DLListThread(int which)
 {
+    // CreateDLList(dlist,itemNum,which);
+    // RemoveItems(dlist,itemNum,which);
     CreateDLList(dlist,itemNum,which);
+    printf("*** thread %d Insert %d number\n", which,itemNum);
+
+    dlist->Remove(NULL);
+    printf("*** thread %d Remove\n", which);
+
+    currentThread->Yield();
+    tmpnum = GenerateInt(which);
+    dlist->SortedInsert(NULL,tmpnum);
+    printf("*** thread %d SortedInsert %d\n", which,tmpnum);
+
+    dlist->Append(NULL);
+    printf("*** thread %d Append\n", which);
+    currentThread->Yield();
+    dlist->Prepend(NULL);
+    printf("*** thread %d Prepend\n", which);
+
+    currentThread->Yield();
+    tmpnum = GenerateInt(which);
+    dlist->SortedInsert(NULL,tmpnum);
+    printf("*** thread %d SortedInsert %d\n", which,tmpnum);
+    currentThread->Yield();
+    tmpnum = GenerateInt(which);
+    dlist->SortedInsert(NULL,tmpnum);
+    printf("*** thread %d SortedInsert %d\n", which,tmpnum);
+
+    dlist->Append(NULL);
+    printf("*** thread %d Append\n", which);
+    
+    currentThread->Yield();
+    dlist->Prepend(NULL);
+    printf("*** thread %d Prepend\n", which);
+    currentThread->Yield();
+    dlist->Prepend(NULL);
+    printf("*** thread %d Prepend\n", which);
+
     RemoveItems(dlist,itemNum,which);
 }
 

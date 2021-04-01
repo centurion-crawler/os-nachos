@@ -3,7 +3,8 @@
 #include <stdio.h> 
 #include "dllist.h"
 #include "system.h"
-
+#include "thread.h"
+extern Thread *currentThread;
 DLLElement::DLLElement(void* itemPtr, int sortKey)
 {
     item = itemPtr;
@@ -72,17 +73,25 @@ DLList::SortedInsert(void* item, int sortkey)
 {
     DLLElement *element = new DLLElement(item, sortkey);
     DLLElement *ptr; //keep track
-
+    // printf("switch thread happened.\n");
+    // currentThread->Yield(); // error0
     if (IsEmpty()){
         first = element;
         last = element;
     } else if (sortkey < first->key){
         // item goes on front of list
+
+        // printf("switch thread happened.\n");
+        // for (int i=0;i<=10000;i++);
+        // currentThread->Yield(); // error1
+        
         first->prev = element;
         element->next = first;
         first = element;
     } else {
         for (ptr = first;ptr->next!=NULL;ptr = ptr->next){
+            // printf("switch thread happened.\n");
+            // currentThread->Yield(); // error2
             if (sortkey < ptr->next->key){
                 element->next = ptr->next;
                 element->prev = ptr;

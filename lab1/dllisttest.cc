@@ -4,6 +4,7 @@
 #include <stdlib.h>
 int main(int argc, char **argv)
 {
+
     int argCount,itemNum;
     DLList *dptr = new DLList();
     for (argc--, argv++; argc > 0; argc -= argCount, argv += argCount) {

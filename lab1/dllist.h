@@ -27,7 +27,7 @@ private:
     DLLElement *first; // head of the list, NULL if empty
     DLLElement *last; // last element of the list, NULL if empty
 };
-int GenerateInt();
+int GenerateInt(int);
 bool CreateDLList(DLList*,int,int);
 bool RemoveItems(DLList* ,int ,int);
 #endif
