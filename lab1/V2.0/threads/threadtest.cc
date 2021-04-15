@@ -57,14 +57,14 @@ DLListOperation1(int which)
     // list->Display();
 
     
-    //case2
+   // case2
 
     InsertN(5,list,1);
-    printf("*** thread %d Insert5\n", which);
+    printf("*** thread %d Insert 5\n", which);
     //list->Display();
 
     RemoveN(4,list);
-    printf("*** thread %d Remove4\n", which);
+    printf("*** thread %d Remove 4\n", which);
     //list->Display();
 
     currentThread->Yield();
@@ -74,33 +74,33 @@ DLListOperation1(int which)
     list->Display();
 
 
-    //case3
+    // //case3
 
-    InsertN(5,list,1);
-    printf("*** thread %d Insert5\n", which);
-    //list->Display();
+    // InsertN(5,list,1);
+    // printf("*** thread %d Insert 5\n", which);
+    // //list->Display();
 
-    currentThread->Yield();
+    // currentThread->Yield();
 
-    list->SortedRemove(12);
-    printf("*** thread %d SortedRemove23\n", which);
-    list->Display();
+    // list->SortedRemove(12);
+    // printf("*** thread %d SortedRemove 23\n", which);
+    // list->Display();
 
-    //case4
+    // //case4
 
-    InsertN(5,list,1);
-    printf("*** thread %d Insert5\n", which);
-    //list->Display();
+    // InsertN(5,list,1);
+    // printf("*** thread %d Insert 5\n", which);
+    // //list->Display();
 
-    //currentThread->Yield();
+    // //currentThread->Yield();
 
-    list->Prepend((void*)0);
-    printf("*** thread %d Prepend\n", which);
-    //list->Display();
+    // list->Prepend((void*)0);
+    // printf("*** thread %d Prepend\n", which);
+    // //list->Display();
 
-    list->Prepend((void*)0);
-    printf("*** thread %d Prepend\n", which);
-    list->Display();
+    // list->Prepend((void*)0);
+    // printf("*** thread %d Prepend\n", which);
+    // list->Display();
 
 }
 
@@ -112,27 +112,27 @@ DLListOperation2(int which)
     //DLList *list = new DLList();
 
     // //case 1
-
+    // printf("*** thread %d Insert 5\n", which);
     // InsertN(5,list,2);
     // list->Display();
 
-    // //case2
+    //case2
 
-    // RemoveN(4,list);
-    // printf("*** thread %d Remove4\n", which);
+    RemoveN(4,list);
+    printf("*** thread %d Remove4\n", which);
+    list->Display();
+
+    // //case3
+
+    // list->Remove(keyPtr);
+    // printf("*** thread %d Remove\n", which);
     // list->Display();
 
-    //case3
+    // //case4
 
-    list->Remove(keyPtr);
-    printf("*** thread %d Remove\n", which);
-    list->Display();
-
-    //case4
-
-    list->Remove(keyPtr);
-    printf("*** thread %d Remove\n", which);
-    list->Display();
+    // list->Remove(keyPtr);
+    // printf("*** thread %d Remove\n", which);
+    // list->Display();
 
 }
 
@@ -173,6 +173,7 @@ ThreadTest2()
 void
 ThreadTest()
 {
+    printf("testnum:%d\n",testnum);
     switch (testnum) {
     case 1:
 	   ThreadTest1();
