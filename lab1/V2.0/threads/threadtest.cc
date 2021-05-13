@@ -83,7 +83,7 @@ DLListOperation1(int which)
     // currentThread->Yield();
 
     // list->SortedRemove(12);
-    // printf("*** thread %d SortedRemove 23\n", which);
+    // printf("*** thread %d SortedRemove 12\n", which);
     // list->Display();
 
     // //case4
